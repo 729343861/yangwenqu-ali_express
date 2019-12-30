@@ -11,7 +11,11 @@ namespace Yangwenqu\NationalExpress;
 class Express
 {
     private $host = "https://wuliu.market.alicloudapi.com" ;
-    private $path = "/kdi";
+    private $path = [
+        'kdi'=> "/kdi" ,  //查快递信息
+        'getExpressList'=> "/getExpressList" //查公司信息
+    ];
+    private $router = "";
     private $method = "GET";
     private $appcode = "";
     public function __construct($config)
@@ -34,17 +38,29 @@ class Express
         }
 
         $queryStr = http_build_query($queryInfo);
-
+        $this->router = $this->path['kdi'];
         $res = $this->curl($queryStr);
 
         return $res;
+    }
+
+    public function getExpressCompanyList($companyInfo = []){
+        $queryStr = "";
+        if($companyInfo){
+            $queryStr = http_build_query($companyInfo);
+        }
+        $this->router = $this->path['kdi'];
+        $res = $this->curl($queryStr);
+
+        return $res;
+
     }
 
     function curl($querys = "") {
 
         $headers = array();
         array_push($headers, "Authorization:APPCODE " . $this->appcode);
-        $url = $this->host . $this->path . "?" . $querys;//url拼接
+        $url = $this->host . $this->router . "?" . $querys;//url拼接
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->method);

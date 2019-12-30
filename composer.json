@@ -1,6 +1,6 @@
 {
     "name": "yangwenqu/ali_express",
-    "description": "ali",
+    "description": "用于阿里api市场全国快递查询服务",
     "type": "library",
     "require": {
         "php": ">=5.4.0"

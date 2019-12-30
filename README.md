@@ -22,13 +22,18 @@ class DemoController
             ];
     
     public function index()
-    {
+    {       
+    
         $info  = ['no'=> '运单号','type'=> "快递公司type缩写"];
 
-       $Express = new Express($this->config);
-       $res     = $Express->getExpressInfo($info);
+        $Express = new Express($this->config);
+        //查快递信息
+        $res     = $Express->getExpressInfo($info);
        var_dump($res);
-       
+       //获取快递公司信息
+        $param = ['type'=> 'zto'];
+        $res     = $Express->getExpressCompanyList($param); //参数不传则获取快递公司列表
+       var_dump($res);
     }
 
     
