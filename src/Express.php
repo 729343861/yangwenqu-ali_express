@@ -62,7 +62,7 @@ class Express
         }
 
         $res = curl_exec($curl) ;
-        var_dump($res);
+
         return $res;
     }
 

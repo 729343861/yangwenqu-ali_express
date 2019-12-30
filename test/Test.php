@@ -10,6 +10,6 @@
 
 
 
-$exp = new \Yangwenqu\NationalExpress\Express();
+$Express = new Yangwenqu\NationalExpress\Express(['appcode'=> '你的阿里市场全国快递api服务appcode']);
 
-$exp->getExpressInfo([]);
+$Express->getExpressInfo(['no'=> '运单号','type'=> "快递公司type缩写"]);
