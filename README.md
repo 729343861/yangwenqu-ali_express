@@ -34,7 +34,3 @@ class DemoController
     
 }
 ```
-
-
-## LICENSE
-MIT
