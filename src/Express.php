@@ -10,7 +10,7 @@ namespace Yangwenqu\NationalExpress;
 
 class Express
 {
-    private $host = "https://wuliu.market.alicloudapi.com" ;
+    private $host = "http://wuliu.market.alicloudapi.com" ;
     private $path = [
         'kdi'=> "/kdi" ,  //查快递信息
         'getExpressList'=> "/getExpressList" //查公司信息
@@ -49,7 +49,7 @@ class Express
         if($companyInfo){
             $queryStr = http_build_query($companyInfo);
         }
-        $this->router = $this->path['kdi'];
+        $this->router = $this->path['getExpressList'];
         $res = $this->curl($queryStr);
 
         return $res;
